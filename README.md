@@ -128,6 +128,7 @@ Pour votre topologie il est utile de contrôler la connectivité entre :
 **Question 2: Tous vos pings ont-ils passé ? Si non, est-ce normal ? Dans ce cas, trouvez la source du problème et corrigez-la.**
 
 ---
+Tous les pings sont passés.
 
 ---
 
@@ -149,8 +150,18 @@ Pour déclencher et pratiquer les captures vous allez « pinger » votre routeur
 **Question 3: Montrez vous captures**
 
 ---
+Capture wireshark depuis R2 eth0/0 :
+![captureWireshark](images/CaptureWireshark.PNG)  
+  
+Capture du debug icmp sur R2 : 
+![debugICMPR2](images/R2pingFromVPC.png)
 
-**Screenshots :**  
+R2 n'étant pas concerné par le ping, rien n'est affiché.  
+
+Capture du debug icmp sur R1 : 
+![debugICMPR1](images/R1pingFromVPC.PNG)
+  
+R1 étant la cible du ping on peut voir les envoie des echo reply
 
 ---
 
@@ -220,8 +231,11 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 **Question 4: Utilisez la commande `show crypto isakmp policy` et faites part de vos remarques :**
 
 ---
-
-**Réponse :**  
+Config de R2 : 
+![configCryptR2](images/R2isakmpConf.PNG)
+  
+Config de R1 :  
+![configCryptR1](images/R1isakmpConf.PNG)  
 
 ---
 
@@ -230,7 +244,11 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 
 ---
 
-**Réponse :**  
+Clef de R2 :  
+![clefR2](images/keyR2.PNG)  
+
+Clef de R1 :  
+![clefR1](images/keyR1.PNG)
 
 ---
 
@@ -322,16 +340,27 @@ Pensez à démarrer votre sniffer sur la sortie du routeur R2 vers internet avan
 **Question 6: Ensuite faites part de vos remarques dans votre rapport. :**
 
 ---
-
-**Réponse :**  
+Bonne configuration des crypto map :  
+Crypto map de R1 :
+![CryptoMap R1](images/R1CryptoMap.jpg) 
+Crypto map de R2 :
+![CryptoMap R2](images/R2CryptoMap.jpg)   
+  
+  
+Capture wireshark :
+![Capture WS chiffre sur R2](images/R2e00CapCrypted.PNG)  
+  
+Capture debug des pings sur R1 :
+![Debug ping R1](images/logR1pingESP.PNG)
 
 ---
 
 **Question 7: Reportez dans votre rapport une petite explication concernant les différents « timers » utilisés par IKE et IPsec dans cet exercice (recherche Web). :**
 
 ---
+Security-association idle time : Durée de vie des clefs utilisés par les tunnels pour chiffrer les données. A la fin de ce temps imparti, une nouvelle clef est crée.  
+cripto isakmp lifetime : 
 
-**Réponse :**  
 
 ---
 
