@@ -92,7 +92,7 @@ Un « protocol » différent de `up` indique la plupart du temps que l’interfa
 
 ---
 
-**Réponse :**  
+Non n'avons pas rencontré de problèmes. Afin de vérifier que tout fonctionnait correctement on a ping depuis le VPC les différentes interfaces
 
 ---
 
@@ -128,8 +128,6 @@ Pour votre topologie il est utile de contrôler la connectivité entre :
 **Question 2: Tous vos pings ont-ils passé ? Si non, est-ce normal ? Dans ce cas, trouvez la source du problème et corrigez-la.**
 
 ---
-
-**Réponse :**  
 
 ---
 
