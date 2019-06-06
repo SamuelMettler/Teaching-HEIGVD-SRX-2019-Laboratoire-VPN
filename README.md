@@ -231,7 +231,7 @@ Vous pouvez consulter l’état de votre configuration IKE avec les commandes su
 **Question 4: Utilisez la commande `show crypto isakmp policy` et faites part de vos remarques :**
 
 ---
-Config de R2 : 
+Config de R2 :  
 ![configCryptR2](images/R2isakmpConf.PNG)
   
 Config de R1 :  
@@ -358,9 +358,9 @@ Capture debug des pings sur R1 :
 **Question 7: Reportez dans votre rapport une petite explication concernant les différents « timers » utilisés par IKE et IPsec dans cet exercice (recherche Web). :**
 
 ---
-Security-association idle time : Durée de vie des clefs utilisés par les tunnels pour chiffrer les données. A la fin de ce temps imparti, une nouvelle clef est crée.  
-cripto isakmp lifetime : 
+Security-association idle time : Si inactifs les SA devront être effacés après un certain laps de temps (minutes). Ce laps de temps est défini par le idle time. Utilisé quand un routeur utilisant Cisco IOS crée une SA (security association) pour un user.
 
+Crypto isakmp lifetime : laps de temps valable dans laquelle la clef actuelle peut être utilisé pour le chiffrement avant d'être remplacé. Utilisé par le IKE (ISAKMP) pour crée une security association entre deux hôtes.
 
 ---
 
@@ -374,7 +374,7 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 ---
 
-**Réponse :**  
+Le protocole IKE a été utilisé ici (on peut voir l'utilisation de ISAKMP à la question précédente qui est propre à IKE).
 
 ---
 
@@ -383,7 +383,15 @@ En vous appuyant sur les notions vues en cours et vos observations en laboratoir
 
 ---
 
-**Réponse :**  
+Comme précisé dans la configuration IPSec, le mode utilisé est le mode tunnel.  
+```
+crypto ipsec security-association lifetime kilobytes 2560
+...
+  mode tunnel
+  ...
+crypto map MY-CRYPTO 10 ipsec-isakmp 
+  ...
+``` 
 
 ---
 
